@@ -1,6 +1,8 @@
 # Apptivities - Created by Eric, Elle and Tristan
 <img src='#' alt='logo here'>
+
 ---
+
 # Creation Markdown
 
 ## File List for the app using Django
