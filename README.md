@@ -25,9 +25,9 @@ Our goal is to make having fun and finding things to do easy! Just enter your in
 
 # Getting Started
 
-[Click to Checkout Apptivities!](Heroku link will go here)
-[Click to View Our Trello](https://trello.com/b/BjJmgawF/u3-final-project)
-[Click to View Our Pitch Deck](https://docs.google.com/presentation/d/1gxgXX5ZBx91zvnljr-kLKR_24mN9wCfKC7a_uz794Qk/edit#slide=id.g228f5789d41_0_232)
+- [Click to Checkout Apptivities!](Heroku link will go here)
+- [Click to View Our Trello](https://trello.com/b/BjJmgawF/u3-final-project)
+- [Click to View Our Pitch Deck](https://docs.google.com/presentation/d/1gxgXX5ZBx91zvnljr-kLKR_24mN9wCfKC7a_uz794Qk/edit#slide=id.g228f5789d41_0_232)
 
 
 # Next Steps
