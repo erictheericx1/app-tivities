@@ -10,6 +10,7 @@ Our goal is to make having fun and finding things to do easy! Just enter your in
 
 
 ## Technologies Used
+### The technologies we used to build this app are as follows:
 
 - PSQL
 - Django
