@@ -3,7 +3,9 @@ Sometime,  you are so drained after work or school that you cannot think straigh
 
 Our goal is to make having fun and finding things to do easy! Just enter your interests and location and let Apptivities do the work. This app will help you do just that!
 
+
 ## (Screenshot will go here)
+
 
 
 
@@ -17,7 +19,9 @@ Our goal is to make having fun and finding things to do easy! Just enter your in
 - Skeleton
 - Google Slides
 - Trello
-- 
+- Heroku
+- Github
+
 
 # Getting Started
 
@@ -28,5 +32,6 @@ Our goal is to make having fun and finding things to do easy! Just enter your in
 
 # Next Steps
 
-- Future enhancement one (place holder)
-- Future enhancement two (place holder)
+- **Future enhancement one:** Feature that suggests activities based on your age and/or health condition
+- **Future enhancement two:** Feature that suggests activities based on a specific location
+- **Future enhancement three:** Feature that if you don't do the activity and end up just doing nothing, a modal will pop up chastising you
