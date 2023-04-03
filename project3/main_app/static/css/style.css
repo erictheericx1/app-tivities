@@ -3,6 +3,7 @@
 :root {
     --background-color: white;
     --main-color: #c5c5c5;
+    --secondary-color: #1eafdb55;
     --skeleton-blue: #1EAEDB;
     --logo-font: 'Bungee', cursive;
 }
@@ -19,6 +20,35 @@ body {
 .title {
     font-family: var(--logo-font)
 }
+
+/* remove default table styles: */
+th, td {
+    border: none;
+}
+
+/* user page styles 
+---------------------------------*/
+
+.user-styles {
+    background: linear-gradient(to bottom, var(--main-color), var(--background-color));
+}
+
+.user-welcome {
+    margin-top: 5rem;
+}
+
+.user-nav {
+    border-bottom: 2px solid black;
+    margin: 3rem 0;
+}
+
+.user-card {
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    min-height: 40vh;
+}
+
+
 
 /* landing page styles 
 ---------------------------------*/

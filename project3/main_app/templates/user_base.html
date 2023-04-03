@@ -4,11 +4,15 @@
 
 <div class="container">
 
-    <nav class="user-nav">
-        <a href="#">Find Activities</a>
-        <a href="#">Interests</a>
-        <a href="#">Past Activities</a>
-    </nav>
+    <div class="user-welcome">
+        <h2>Welcome, {{ user.get_username }}</h2>
+    </div>
+
+    <div class="user-nav">
+        <a href="{% url 'recommend' user.id%}" class="button">Find Activities</a>
+        <a href="{% url 'interests' user.id%}" class="button">Interests</a>
+        <a href="{% url 'past_activities' user.id%}" class="button">Past Activities</a>
+    </div>
 
     <div class="user-content">
         {% block content2 %}

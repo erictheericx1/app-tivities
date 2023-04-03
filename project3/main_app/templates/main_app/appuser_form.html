@@ -1,23 +1,30 @@
 {% extends 'user_base.html' %}
 {% block content2 %}
 
+<h2>Interests</h2>
 
-{% if object %}
-  <h1>Edit <span>{{ object.name }}'s Interests</span></h1>
-{% else %}
-  <h1>Add Interests</h1>
-{% endif %}
+<div class="row">
+  <div class="one-half column user-card">
+    <h3>Current Interests </h3>
+  </div>
 
-<!-- Leaving the action empty makes the form post to the same url used to display it -->
-<form action="" method="POST">
-    <!-- Django requires the following for security purposes -->
-    {% csrf_token %}
-    <table>
-      <!-- Render the inputs inside of <tr>s & <td>s -->
-      {{ form.as_table }}
-    </table>
-    <input type="submit" value="Submit!" class="btn">
-  </form>
+  <div class="one-half column user-card">
+    {% if object %}
+      <h3>Edit <span>{{ object.name }}'s Interests</span></h3>
+    {% else %}
+      <h3>Add Interests</h3>
+    {% endif %}
 
+    <form action="" method="POST">
+      <div class="u-full-width">
+        {% csrf_token %}
+        <table>
+          {{ form.as_table }}
+        </table>
+        <input type="submit" value="Submit" class="button-primary">
+      </div>
+    </form>
+  </div>
+</div>
 
 {% endblock %} 

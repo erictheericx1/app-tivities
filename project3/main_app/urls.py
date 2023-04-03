@@ -16,8 +16,9 @@ urlpatterns = [
     # recommend path
         # this is the path to the recommendation page
     path('user/<int:user_id>/recommend/', views.recommend, name='recommend'),
-    path('accounts/', include('django.contrib.auth.urls'))
+    path('accounts/', include('django.contrib.auth.urls')),
         # localhost:8000/accounts/login 
         # built in django user authentication
+    # path('user/<int:user_id>/past_activities/', views.past_activities.as_view(), name='past_activities'),
 ]
 

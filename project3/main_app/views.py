@@ -16,19 +16,19 @@ def about(request):
 # Define the past_activities view
 def past_activities(request, user_id):
   user = User.objects.get(id=user_id)
-  past_activities = UserActivity.objects.filter(user=user)
-  return render(request, 'past_activities.html', {
+  # past_activities = UserActivity.objects.filter(user=user)
+  return render(request, 'User/past_activities.html', {
     'user': user,
-    'past_activities': past_activities
+    # 'past_activities': past_activities
   })
 
 # Define the interests view
 def interests(request, user_id):
   user = User.objects.get(id=user_id)
-  interests = User.objects.get(id=user_id).interests
-  return render(request, 'interests.html', {
+  appuser = AppUser.objects.get(id=user_id)
+  return render(request, 'User/interests.html', {
     'user': user,
-    'interests': interests
+    'appuser': appuser,
   })
 
 class UserUpdate(UpdateView):
@@ -48,6 +48,6 @@ class UserCreate(CreateView):
 # Define the recommend view
 def recommend(request, user_id):
   user = User.objects.get(id=user_id)
-  return render(request, 'recommend.html', {
+  return render(request, 'User/recommend.html', {
     'user': user
   })
