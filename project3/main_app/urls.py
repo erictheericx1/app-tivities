@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
@@ -15,4 +15,7 @@ urlpatterns = [
     # recommend path
         # this is the path to the recommendation page
     path('user/<int:user_id>/recommend/', views.recommend, name='recommend'),
+    path('accounts/', include('django.contrib.auth.urls'))
+        # localhost:8000/accounts/login 
+        # built in django user authentication
 ]

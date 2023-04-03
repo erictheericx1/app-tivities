@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <nav class="user-nav">
+        <a href="#">Find Activities</a>
+        <a href="#">Interests</a>
+        <a href="#">Past Activities</a>
+    </nav>
+
+    <div class="user-content">
+        {% block-user content %}
+        {% endblock %}
+    </div>
+</div>
+
+{% endblock %}
