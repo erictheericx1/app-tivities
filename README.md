@@ -24,14 +24,14 @@ Our goal is to make having fun and finding things to do easy! Just enter your in
 - Github
 
 
-# Getting Started
+## Getting Started
 
 - [Click to Checkout Apptivities!](Heroku link will go here)
 - [Click to View Our Trello](https://trello.com/b/BjJmgawF/u3-final-project)
 - [Click to View Our Pitch Deck](https://docs.google.com/presentation/d/1gxgXX5ZBx91zvnljr-kLKR_24mN9wCfKC7a_uz794Qk/edit#slide=id.g228f5789d41_0_232)
 
 
-# Next Steps
+## Next Steps
 
 - **Future enhancement one:** Feature that suggests activities based on your age and/or health condition
 - **Future enhancement two:** Feature that suggests activities based on a specific location
