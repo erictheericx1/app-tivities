@@ -1,5 +1,5 @@
 # Apptivities
-Sometime,  you are so drained after work or school that you cannot think straight, if at all.  You spend so much time trying to decompress and restart your mind that you end up just doing nothing.  
+Sometime,  you are so drained after work or school that you cannot think straight, if at all.  You spend so much time trying to decompress and restart your mind that you end up just doing nothing.  We understand that everyone has unique interests and preferences when it comes to finding things to do. That's why we've created a platform that allows you to input your location and select from a wide variety of interests, from food and drink to sports and outdoor activities.
 
 Our goal is to make having fun and finding things to do easy! Just enter your interests and location and let Apptivities do the work. This app will help you do just that!
 
