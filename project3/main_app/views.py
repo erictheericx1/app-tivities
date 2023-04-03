@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
-from .models import User, Activity, UserActivity
+from .models import User, Activity, UserActivity, AppUser
 
 # Create your views here.
 
@@ -32,9 +32,18 @@ def interests(request, user_id):
   })
 
 class UserUpdate(UpdateView):
-  model = User
+  model = AppUser
   fields = ['interests']
   success_url = '/user/<int:user_id>/interests/'
+
+class UserCreate(CreateView):
+  model = AppUser
+  fields = ['interests']
+  success_url = '/user/<int:user_id>/interests/'
+
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
 
 # Define the recommend view
 def recommend(request, user_id):

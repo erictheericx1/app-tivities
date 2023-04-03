@@ -7,6 +7,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     # user paths
         # for now when you look at user it starts off showing past activities
+    path('user/', views.UserCreate.as_view(), name='user'),
     path('user/<int:user_id>/', views.past_activities, name='past_activities'),
         # this is the path to the user's interests
     path('user/<int:user_id>/interests/', views.interests, name='interests'),
@@ -19,3 +20,4 @@ urlpatterns = [
         # localhost:8000/accounts/login 
         # built in django user authentication
 ]
+
