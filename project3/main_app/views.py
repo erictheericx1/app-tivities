@@ -48,6 +48,10 @@ class UserCreate(CreateView):
 # Define the recommend view
 def recommend(request, user_id):
   user = User.objects.get(id=user_id)
+  appuser = AppUser.objects.get(id=user_id)
+  recommendation = Activity.objects.filter(interests__overlap=appuser.interests).first()
   return render(request, 'User/recommend.html', {
-    'user': user
+    'user': user,
+    'appuser': appuser,
+    'recommendation': recommendation,
   })

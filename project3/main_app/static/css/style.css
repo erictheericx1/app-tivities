@@ -50,6 +50,17 @@ th, td {
 
 
 
+/* activity result styles 
+---------------------------------*/
+
+.results {
+    display: none;
+}
+
+.results-display {
+    display: block;
+}
+
 /* landing page styles 
 ---------------------------------*/
 
@@ -179,3 +190,24 @@ footer {
 footer h6 {
     margin: auto 0;
 }
+
+
+.swirl-in {
+    opacity: 0;
+    transform: scale(0.1) rotate(360deg);
+    animation-name: swirlIn;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+  
+@keyframes swirlIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.1) rotate(360deg);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+  }

@@ -1,6 +1,26 @@
 {% extends 'user_base.html' %}
 {% block content2 %}
 
-<h1>recommend</h1>
+<h1>Tell Me What to Do!</h1>
+
+<div class="row">
+    <div class="one-half column user-card">
+        <a href="#" class="button" id="rec-btn">Get Recommendations</a>
+        <div class="results" id="rec-results">
+            <h5>Here are some things you can do:</h5>
+            <h5>{{recommendation.name}}</h5>
+            <!-- stretch: maybe add some loading animation -->
+        </div>
+    </div>
+</div>
+
+<script>
+    let recBtn = document.getElementById('rec-btn');
+    let recResults = document.getElementById('rec-results');
+
+    recBtn.addEventListener('click', function() {
+        recResults.classList.remove("results");
+    })
+</script>
 
 {% endblock %}
