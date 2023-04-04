@@ -1,25 +1,38 @@
-# Apptivities - Created by Eric, Elle and Tristan
-<img src='#' alt='logo here'>
+# Apptivities
+Sometime,  you are so drained after work or school that you cannot think straight, if at all.  You spend so much time trying to decompress and restart your mind that you end up just doing nothing.  We understand that everyone has unique interests and preferences when it comes to finding things to do. That's why we've created a platform that allows you to input your location and select from a wide variety of interests, from food and drink to sports and outdoor activities.
 
----
+Our goal is to make having fun and finding things to do easy! Just enter your interests and location and let Apptivities do the work. This app will help you do just that!
 
-# Creation Markdown
 
-## File List for the app using Django
+## (Screenshot will go here)
 
-### HTML files
-- base.html                 : Base file with header, footer, etc.
-- home.html                 : Home Page
-- about.html                : About Page
-- user_details.html         : Displays info of one specific user
-- activity_details.html     : Displays info of one specific activity
-- activity_index.html       : Displays all activities
-- user_form.html            : Form for user creation (asking for AUTH details)
-- interest_details.html     : Displays info on one interest
-- interest_index.html       : Displays all interests
-- interest_form.html        : Form for user inputing their interests
 
-### Models/Schemas
-- user.js                   : defining user object
-- activity.js               : defining activity object
-- interest.js               : defining interest object.
+
+
+## Technologies Used
+### The technologies we used to build this app are as follows:
+
+- PSQL
+- Django
+- Python
+- HTML
+- CSS
+- Skeleton
+- Google Slides
+- Trello
+- Heroku
+- Github
+
+
+## Getting Started
+
+- [Click to Checkout Apptivities!](Heroku link will go here)
+- [Click to View Our Trello](https://trello.com/b/BjJmgawF/u3-final-project)
+- [Click to View Our Pitch Deck](https://docs.google.com/presentation/d/1gxgXX5ZBx91zvnljr-kLKR_24mN9wCfKC7a_uz794Qk/edit#slide=id.g228f5789d41_0_232)
+
+
+## Next Steps
+
+- **Future enhancement one:** Feature that suggests activities based on your age and/or health condition
+- **Future enhancement two:** Feature that suggests activities based on a specific location
+- **Future enhancement three:** Feature that if you don't do the activity and end up just doing nothing, a modal will pop up chastising you
