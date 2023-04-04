@@ -16,6 +16,3 @@ class UserActivity(models.Model):
     user = models.ForeignKey(AppUser, related_name="activity_user", on_delete = models.CASCADE)
     activity = models.ForeignKey(Activity, related_name="user_activity", on_delete = models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-
-# to find all activities that match the user's interests, use the following query:
-# Activity.objects.filter(interests__overlap=user.interests)

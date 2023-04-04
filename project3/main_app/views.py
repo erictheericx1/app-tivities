@@ -16,10 +16,13 @@ def about(request):
 # Define the past_activities view
 def past_activities(request, user_id):
   user = User.objects.get(id=user_id)
-  # past_activities = UserActivity.objects.filter(user=user)
+  past_activities = UserActivity.objects.filter(user_id=user_id)
+  arr = []
+  for activity in past_activities:
+    arr.append(Activity.objects.get(id=activity.activity_id))
   return render(request, 'User/past_activities.html', {
     'user': user,
-    # 'past_activities': past_activities
+    'acts': arr,
   })
 
 # Define the interests view
@@ -55,3 +58,12 @@ def recommend(request, user_id):
     'appuser': appuser,
     'recommendation': recommendation,
   })
+
+class UserActivityCreate(CreateView):
+  model = UserActivity
+  fields = ['activity']
+  success_url = '/user/<int:user_id>/past_activities/'
+
+  def form_valid(self, form):
+    form.instance.user = AppUser.objects.get(id=self.request.user.id)
+    return super().form_valid(form)
