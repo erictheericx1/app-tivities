@@ -3,6 +3,7 @@
 :root {
     --background-color: white;
     --main-color: #c5c5c5;
+    --secondary-color: #1eafdb55;
     --skeleton-blue: #1EAEDB;
     --logo-font: 'Bungee', cursive;
 }
@@ -18,6 +19,46 @@ body {
 ---------------------------------*/
 .title {
     font-family: var(--logo-font)
+}
+
+/* remove default table styles: */
+th, td {
+    border: none;
+}
+
+/* user page styles 
+---------------------------------*/
+
+.user-styles {
+    background: linear-gradient(to bottom, var(--main-color), var(--background-color));
+}
+
+.user-welcome {
+    margin-top: 5rem;
+}
+
+.user-nav {
+    border-bottom: 2px solid black;
+    margin: 3rem 0;
+}
+
+.user-card {
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    min-height: 40vh;
+}
+
+
+
+/* activity result styles 
+---------------------------------*/
+
+.results {
+    display: none;
+}
+
+.results-display {
+    display: block;
 }
 
 /* landing page styles 
@@ -149,3 +190,24 @@ footer {
 footer h6 {
     margin: auto 0;
 }
+
+
+.swirl-in {
+    opacity: 0;
+    transform: scale(0.1) rotate(360deg);
+    animation-name: swirlIn;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+  
+@keyframes swirlIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.1) rotate(360deg);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+  }
