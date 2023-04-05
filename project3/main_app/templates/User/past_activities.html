@@ -1,0 +1,22 @@
+{% extends 'user_base.html' %}
+{% block content2 %}
+
+<h2>Past Activities {{user.id}}</h2>
+
+<div class="row">
+    <div class="one-half column user-card">
+        <h5>{{ user.get_username }}'s previous activity searches:</h5>
+        <ul>
+            {% for activity in acts %}
+            <li>{{ activity.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+
+<script>
+    // append all the past activities to the div
+</script>
+
+{% endblock %}
