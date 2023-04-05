@@ -52,8 +52,6 @@ th, td {
     min-height: 40vh;
 }
 
-
-
 /* activity result styles 
 ---------------------------------*/
 
@@ -65,6 +63,19 @@ th, td {
     display: block;
 }
 
+
+/* activity result styles 
+---------------------------------*/
+
+
+.activity-card {
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    margin: 1.5rem 0;
+    border-radius: 20px;
+}
+
+
 /* login/signup page styles 
 ---------------------------------*/
 
@@ -75,6 +86,11 @@ th, td {
     box-shadow: 10px 10px var(--main-color);
 }
 
+.error {
+    background-color: red;
+    border-radius: 5px;
+    font-weight: bolder;
+}
 
 /* landing page styles 
 ---------------------------------*/

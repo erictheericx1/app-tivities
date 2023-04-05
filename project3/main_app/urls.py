@@ -12,7 +12,10 @@ urlpatterns = [
         # this is the path to the user's interests
     path('user/<int:user_id>/interests/', views.interests, name='interests'),
         # bcs interests is an array of the user, we just need to update the user model
-    path('user/<int:pk>/interests/edit/', views.AppUserUpdate.as_view(), name='edit_interest'),
+    path('user/<int:user_id>/interests/edit/', views.interests_edit, name='edit_interest'),
+
+    path('user/<int:user_id>/interests/add/<str:interest>/', views.interests_add, name='add_interest'),
+    path('user/<int:user_id>/interests/remove/<str:interest>/', views.interests_remove, name='remove_interest'),
 
     path('user/<int:user_id>/create/', views.UserCreate.as_view(), name='create_appuser'),
     # recommend path

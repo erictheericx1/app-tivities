@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<form action="" method="POST">
-    <div class="u-full-width">
-      {% csrf_token %}
-      <table>
-        {{ form.as_table }}
-      </table>
-      <input type="submit" value="Submit" class="button-primary">
+<div class="container buffer">
+
+  <form action="" method="POST">
+      <div class="u-full-width">
+        {% csrf_token %}
+        <table>
+          {{ form.as_table }}
+        </table>
+        <input type="submit" value="Submit" class="button-primary">
+  </form>
+</div>
+
 
 {% endblock %} 

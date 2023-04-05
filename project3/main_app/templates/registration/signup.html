@@ -4,9 +4,11 @@
 <div class="container buffer">
     <h2>Sign Up</h2>
 
-    <p class="error">{{ error_message }}</p>
+    <div class="error">
+        <p>{{ error_message }}</p>
+    </div>
 
-    <div>
+    <div class="access">
         <form action="{% url 'signup' %}" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
