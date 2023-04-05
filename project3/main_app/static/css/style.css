@@ -52,6 +52,13 @@ th, td {
     min-height: 40vh;
 }
 
+.interest-edit {
+    background-color: var(--background-color);
+    border-radius: 10px;
+    margin: 2rem 0;
+    padding: 2rem;
+}
+
 /* activity result styles 
 ---------------------------------*/
 
@@ -64,7 +71,7 @@ th, td {
 }
 
 
-/* activity result styles 
+/* activity model styles 
 ---------------------------------*/
 
 
@@ -87,9 +94,9 @@ th, td {
 }
 
 .error {
-    background-color: red;
-    border-radius: 5px;
+    color: red;
     font-weight: bolder;
+    padding: 8px;
 }
 
 /* landing page styles 

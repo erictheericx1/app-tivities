@@ -139,7 +139,7 @@ def signup(request):
       app_user = AppUser.objects.create(user=user)
       app_user.save()
       login(request, user)
-      return redirect('edit_interests', user_id=user.id)
+      return redirect('edit_interest', user_id=user.id)
       # return redirect('recommend')
     else:
       error_message = 'Invalid sign up - try again'

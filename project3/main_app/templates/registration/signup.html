@@ -4,9 +4,7 @@
 <div class="container buffer">
     <h2>Sign Up</h2>
 
-    <div class="error">
-        <p>{{ error_message }}</p>
-    </div>
+    <p class="error">{{ error_message }}</p>
 
     <div class="access">
         <form action="{% url 'signup' %}" method="POST">
@@ -17,5 +15,9 @@
     </div>
 
 </div>
+
+<script>
+    
+</script>
 
 {% endblock %}
