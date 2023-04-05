@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+
+    <h2>Activity Information</h2>
+    <div>
+        <p>{{ activity.name }}</p>
+        <p>{{ activity.description }}</p>
+        <p id="interest-array">
+            Associated Interests:
+            <ul>
+            {% for interest in activity.interests %}
+            <li>{{ interest }}</li>
+            {% endfor %}
+            </ul></p>
+    </div>
+
+    <a href="{% url 'activity' %}" class="button">View all Activities</a>
+
+</div>
+
+<script>
+    // let interestArray = document.getElementById('interest-array').innerHTML
+    
+</script>
+
+{% endblock %} 

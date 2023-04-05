@@ -26,6 +26,10 @@ th, td {
     border: none;
 }
 
+.buffer {
+    margin-top: 2rem;
+}
+
 /* user page styles 
 ---------------------------------*/
 
@@ -60,6 +64,17 @@ th, td {
 .results-display {
     display: block;
 }
+
+/* login/signup page styles 
+---------------------------------*/
+
+.access {
+    background-color: var(--secondary-color);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 10px 10px var(--main-color);
+}
+
 
 /* landing page styles 
 ---------------------------------*/
@@ -157,7 +172,7 @@ header {
         text-align: center;
     }
 
-    #special-btn {
+    .special-btn {
         background-color: #33C3F0;
         text-transform: uppercase;
         font-weight: 600;

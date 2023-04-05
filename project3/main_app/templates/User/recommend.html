@@ -10,6 +10,7 @@
             <h5>Here are some things you can do:</h5>
             <h5>{{recommendation.name}}</h5>
             <!-- stretch: maybe add some loading animation -->
+            <a href="{% url 'add_activity' user.id recommendation.id%}" class="button" id="rec-btn">I did it!</a>
         </div>
     </div>
 </div>
