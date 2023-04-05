@@ -52,7 +52,12 @@ th, td {
     min-height: 40vh;
 }
 
-
+.interest-edit {
+    background-color: var(--background-color);
+    border-radius: 10px;
+    margin: 2rem 0;
+    padding: 2rem;
+}
 
 /* activity result styles 
 ---------------------------------*/
@@ -65,6 +70,19 @@ th, td {
     display: block;
 }
 
+
+/* activity model styles 
+---------------------------------*/
+
+
+.activity-card {
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    margin: 1.5rem 0;
+    border-radius: 20px;
+}
+
+
 /* login/signup page styles 
 ---------------------------------*/
 
@@ -75,6 +93,11 @@ th, td {
     box-shadow: 10px 10px var(--main-color);
 }
 
+.error {
+    color: red;
+    font-weight: bolder;
+    padding: 8px;
+}
 
 /* landing page styles 
 ---------------------------------*/

@@ -1,19 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="container">
+<div class="container buffer">
 
     <h2>Activity Information</h2>
-    <div>
-        <p>{{ activity.name }}</p>
+
+    <div class="activity-card">
+        <h4>{{ activity.name }}</h4>
         <p>{{ activity.description }}</p>
         <p id="interest-array">
             Associated Interests:
             <ul>
-            {% for interest in activity.interests %}
-            <li>{{ interest }}</li>
-            {% endfor %}
-            </ul></p>
+                {% for interest in activity.interests %}
+                    <li>{{ interest }}</li>
+                {% endfor %}
+            </ul>
+        </p>
     </div>
 
     <a href="{% url 'activity' %}" class="button">View all Activities</a>

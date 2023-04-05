@@ -6,7 +6,6 @@
 <div class="row">
     <div class="one-half column user-card">
         <h3>Current Interests</h3>
-        <h3>{{user.get_username}}</h3>
         <ul>
         {% for interest in appuser.interests %}
             <li>{{ interest }}</li>
@@ -14,7 +13,12 @@
         </ul>
         <a href="{% url 'edit_interest' user.id %}" class="button">Edit Interests</a>
     </div>
-  
+    
 </div>
+
+<script>
+    const editInterests = document.getElementById('edit-interests');
+
+</script>
 
 {% endblock %} 

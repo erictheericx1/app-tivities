@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
-from .models import User, Activity, UserActivity, AppUser
+from .models import User, Activity, UserActivity, AppUser, Inter
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -39,12 +39,39 @@ def interests(request, user_id):
     'user': user,
     'appuser': appuser,
   })
-##not working on new logins? maybe because of the user_id?
 
-class AppUserUpdate(UpdateView):
-  model = AppUser
-  fields = ['interests']
-  success_url = '/user/{user_id}/interests/'
+# Define the interests_edit view
+@login_required
+def interests_edit(request, user_id):
+  user = User.objects.get(id=user_id)
+  appuser = AppUser.objects.get(id=user_id)
+  return render(request, 'User/interests_edit.html', {
+    'user': user,
+    'appuser': appuser,
+  })
+
+# Define the interests_add view
+@login_required
+def interests_add(request, user_id, interest):
+  user = User.objects.get(id=user_id)
+  appuser = AppUser.objects.get(id=user_id)
+  appuser.interests.append(interest)
+  appuser.save()
+  return redirect('edit_interest', user_id=user_id)
+
+# Define the interests_remove view
+@login_required
+def interests_remove(request, user_id, interest):
+  user = User.objects.get(id=user_id)
+  appuser = AppUser.objects.get(id=user_id)
+  appuser.interests.remove(interest)
+  appuser.save()
+  return redirect('edit_interest', user_id=user_id)
+
+# class AppUserUpdate(UpdateView):
+#   model = AppUser
+#   fields = ['interests']
+#   success_url = '/user/{user_id}/interests/'
 
 class UserCreate(LoginRequiredMixin, CreateView):
   model = AppUser
@@ -83,25 +110,6 @@ def add_activity(request, user_id, activity_id):
   print('activity added')
   return redirect('past_activities', user_id=user_id)
 
-
-# signup view
-def signup(request):
-  error_message = ''
-  if request.method == 'POST':
-    form = UserCreationForm(request.POST)
-    if form.is_valid():
-      user = form.save()
-      app_user = AppUser.objects.create(user=user)
-      app_user.save()
-      login(request, user)
-      return redirect('edit_interests', user_id=user.id)
-      # return redirect('recommend')
-    else:
-      error_message = 'Invalid sign up - try again'
-  form = UserCreationForm()
-  context = {'form': form, 'error_message': error_message}
-  return render(request, 'registration/signup.html', context)
-
 class ActivityCreate(LoginRequiredMixin, CreateView):
   model = Activity
   fields = '__all__'
@@ -115,8 +123,26 @@ class ActivityDelete(LoginRequiredMixin, DeleteView):
   model = Activity
   success_url = '/activities/'
 
-class ActivityList(LoginRequiredMixin, ListView):
+class ActivityList(ListView):
   model = Activity
 
 class ActivityDetail(LoginRequiredMixin, DetailView):
   model = Activity
+
+  # signup view
+def signup(request):
+  error_message = ''
+  if request.method == 'POST':
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+      user = form.save()
+      app_user = AppUser.objects.create(user=user)
+      app_user.save()
+      login(request, user)
+      return redirect('edit_interest', user_id=user.id)
+      # return redirect('recommend')
+    else:
+      error_message = 'Invalid sign up - try again'
+  form = UserCreationForm()
+  context = {'form': form, 'error_message': error_message}
+  return render(request, 'registration/signup.html', context)

@@ -1,12 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<form action="" method="POST">
-    <div class="u-full-width">
-      {% csrf_token %}
-      <table>
-        {{ form.as_table }}
-      </table>
-      <input type="submit" value="Submit" class="button-primary">
+<div class="container buffer">
+
+  {% if object %}
+    <h3>Edit <span>{{ object.name }}</span></h3>
+  {% else %}
+    <h3>Add Activity</h3>
+  {% endif %}
+
+  <form action="" method="POST">
+      <div class="u-full-width">
+        {% csrf_token %}
+        <table>
+          {{ form.as_table }}
+        </table>
+        <input type="submit" value="Submit" class="button-primary">
+  </form>
+
+</div>
 
 {% endblock %} 

@@ -1,0 +1,41 @@
+{% extends 'user_base.html' %}
+{% block content2 %}
+
+<h2>Edit Interests</h2>
+
+<div class="row">
+
+    <div class="one-half column user-card">
+        <h3 id="edit-interests">Current Interests</h3>
+        {% for interest in appuser.interests %}
+            <div class="interest-edit row">
+                <p class="six columns">{{ interest }}</p>
+                <a href="{% url 'remove_interest' user.id interest %}" class="button">remove</a>
+            </div>
+        {% endfor %}       
+    </div>
+    
+    <div class="one-half column user-card">
+        <h3 id="edit-interests">Add interests </h3>
+        {% for interest in appuser.all_interests %}
+            {% if interest not in appuser.interests %}
+            <div class="interest-add row">
+                <p class="six columns">{{ interest }}</p>
+                <a href="{% url 'add_interest' user.id interest %}" class="six columns">add</a>
+            </div>
+            {% endif %}
+        {% endfor %}        
+    </div>
+
+</div>
+
+<br>
+
+<a href="{% url 'interests' user.id %}" class="button">Back to Interests</a>
+
+<script>
+    const editInterests = document.getElementById('edit-interests');
+
+</script>
+
+{% endblock %} 

@@ -4,27 +4,26 @@
 <div class="container buffer">
     <h1>Activities</h1>
 
-    <ul>
+    <div class="activity-list">
         {% for activity in object_list %}
-            <li>
-                <ul>
-                <li>Name: {{ activity.name }}</li>
-                <li>Description: {{ activity.description }}</li>
-                <li>
-                    Associated Interests:
-                    <ul>
-                    {% for interest in activity.interests %}
-                    <li>{{ interest }}</li>
-                    {% endfor %}
-                    </ul>
-                </li>
-                <li><a href="{% url 'activity_update' activity.id %}">Edit</a> <a href="{% url 'activity_detail' activity.id %}">Details</a> <a href="{% url 'activity_delete' activity.id %}">Delete</a></li>
-                </ul>
-            </li>
+            <div class="activity-card">
+                <h5> {{ activity.name }}</h5>
+
+                <div>
+                    <a href="{% url 'activity_detail' activity.id %}" class="button">Details</a> 
+                    {% if user.is_staff %}
+                        <a href="{% url 'activity_update' activity.id %}" class="button">Edit</a> 
+                        <a href="{% url 'activity_delete' activity.id %}" class="button">Delete</a>
+                    {% endif %}
+                </div>
+
+            </div>
+
         {% empty %}
             <li>No activities yet.</li>
         {% endfor %}
-    </ul>
+
+    </div>
 
 </div>
 

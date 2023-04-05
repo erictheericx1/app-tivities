@@ -6,11 +6,17 @@
 <div class="row">
     <div class="one-half column user-card">
         <a href="#" class="button" id="rec-btn">Get Recommendations</a>
+        {% if recommendation %}
         <div class="results" id="rec-results">
             <h5>Here are some things you can do:</h5>
             <h5>{{recommendation.name}}</h5>
             <!-- stretch: maybe add some loading animation -->
             <a href="{% url 'add_activity' user.id recommendation.id%}" class="button" id="rec-btn">I did it!</a>
+        {% else %}
+        <div class="results" id="rec-results">
+            <h5>Sorry, we couldn't find anything for you.</h5>
+            <h5>Try adding some interests!</h5>
+        {% endif %}
         </div>
     </div>
 </div>
