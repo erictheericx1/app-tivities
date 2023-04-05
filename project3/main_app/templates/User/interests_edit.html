@@ -3,6 +3,8 @@
 
 <h2>Edit Interests</h2>
 
+<a href="{% url 'interests' user.id %}" class="button button-primary">Finish Editing</a>
+
 <div class="row">
 
     <div class="one-half column user-card">
@@ -28,10 +30,6 @@
     </div>
 
 </div>
-
-<br>
-
-<a href="{% url 'interests' user.id %}" class="button">Back to Interests</a>
 
 <script>
     const editInterests = document.getElementById('edit-interests');

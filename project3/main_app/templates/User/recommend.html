@@ -1,7 +1,7 @@
 {% extends 'user_base.html' %}
 {% block content2 %}
 
-<h1>Tell Me What to Do!</h1>
+<h2>Tell Me What to Do!</h2>
 
 <div class="row">
     <div class="one-half column user-card">
@@ -14,8 +14,8 @@
             <a href="{% url 'add_activity' user.id recommendation.id%}" class="button" id="rec-btn">I did it!</a>
         {% else %}
         <div class="results" id="rec-results">
-            <h5>Sorry, we couldn't find anything for you.</h5>
-            <h5>Try adding some interests!</h5>
+            <p>Sorry, we couldn't find anything for you.</p>
+            <p>Try adding some interests!</p>
         {% endif %}
         </div>
     </div>

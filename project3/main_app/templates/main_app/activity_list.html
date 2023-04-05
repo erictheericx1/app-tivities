@@ -5,6 +5,7 @@
     <h1>Activities</h1>
 
     <div class="activity-list">
+        <a href="{% url 'activity_create' %}" class="button">Add an Activity</a>
         {% for activity in object_list %}
             <div class="activity-card">
                 <h5> {{ activity.name }}</h5>
