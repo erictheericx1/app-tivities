@@ -18,11 +18,13 @@
         
         <!--nav for 750px and above-->
         <nav class="nav-display">
+            <a href="{% url 'activity' %}" class="button">Activities</a>
             {% if user.is_authenticated %}
                 <a href="{% url 'past_activities' user.id%}" class="button">Profile</a>
                 <a href="{% url 'logout' %}" class="button button-primary">Log Out</a>
             {% else %}
                 <a href="/about" class="button">About</a>
+                <a href="{% url 'activity' %}" class="button">Activities</a>
                 <a href="{% url 'login' %}" class="button">Log In</a>
                 <a href="{% url 'signup' %}" class="button button-primary">Sign Up</a>
             {% endif %}
@@ -32,6 +34,7 @@
         <nav class="dropdown">
             <button class="dropbtn button-primary">MENU</button>
             <div class="dropdown-content">
+                <a href="{% url 'activity' %}">Activities</a>
                 {% if user.is_authenticated %}
                     <a href="{% url 'past_activities' user.id%}">Profile</a>
                     <a href="{% url 'logout' %}" class="special-btn">Log Out</a>

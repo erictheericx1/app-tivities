@@ -16,7 +16,7 @@
 
   <div class="one-half column user-card">
     {% if object %}
-      <h3>Edit <span>{{ object.name }}'s Interests</span></h3>
+      <h3>Edit <span>{{ user.get_username }}'s Interests</span></h3>
     {% else %}
       <h3>Add Interests</h3>
     {% endif %}
