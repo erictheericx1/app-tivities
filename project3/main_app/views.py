@@ -246,7 +246,7 @@ def user_wishlist(request, user_id):
   })
 
 def remove_wish(request, user_id, wish_id):
-  Wish.objects.remove(id=wish_id)
+  Wish.objects.filter(id=wish_id).remove()
   return redirect('user_wishlist', user_id=user_id)
 
 

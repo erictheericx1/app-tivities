@@ -4,40 +4,45 @@
 <h2>Tell Me What to Do! {{appuser.id}} {{user.id}}</h2>
 
 <div class="row">
-    <div class="one-half column user-card">
+    <div class="two-thirds column user-card">
 
         <form action="{% url 'ai_rec' appuser.id %}" method="post" id="user-location-form">
             {% csrf_token %}
             <label for="location">Enter your current location:</label>
-            <input type="text" name="location" id="location" placeholder=" San Francisco ">
-            <button type="submit" class="button">Get Recommendations</button>
+            <input type="text" name="location" id="location" placeholder="Ex: San Francisco, CA">
+            <button type="submit" class="button" id="rec-btn">Get Recommendations</button>
         </form>
 
         {% if recommendation %}
-        <div>
+
+        <div class="results-display">
             {% for activity in recommendation %}
                 <p>{{ activity }}</p>
                 <form method="post" action="{% url 'add_wishlist' appuser.id activity %}">
                     {% csrf_token %}
-                    <input type="submit" value="Add to Wishlist" class="button" id="rec-btn">
+                    <input type="submit" value="Add to Wishlist" class="button" id="wish-btn">
                 </form>
-                    <!-- CRUD for Activity model - when a user clicks this button, it redirects to the CreateActivity form and pre-fills the form with the activity name generated here. so this ai function becomes the basis of the CRUD operations for the activity model. we can update that model to have a boolean to see if it's done or not. if the user edits the activity wishlist to be completed, then it moves to past activities   -->
-            {% endfor %}
+            {% endfor %}    
         </div>
+
         {% else %}
-        <div class="results" id="rec-results">
+
+        <div class="loading" id="loading">
             <p>Activities loading....</p>
         </div>
+
         {% endif %}
-
-        </div>
-
 
     </div>
 </div>
 
 <script>
-
+    const recBtn = document.getElementById('rec-btn');
+    const loading = document.getElementById('loading');
+    
+    recBtn.addEventListener('click', () => {
+        loading.classList.remove('loading');
+    })
 
 </script>
 

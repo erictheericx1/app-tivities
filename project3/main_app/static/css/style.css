@@ -59,16 +59,16 @@ th, td {
     padding: 2rem;
 }
 
-/* activity result styles 
+/* recommend activity styles 
 ---------------------------------*/
 
-/* .results {
+.loading {
     display: none;
 }
 
 .results-display {
     display: block;
-} */
+}
 
 
 /* activity model styles 
@@ -126,7 +126,7 @@ th, td {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 15%;
+    border-radius: 10px;
     background-color: var(--skeleton-blue);
     text-align: center;
     height: 100%;
