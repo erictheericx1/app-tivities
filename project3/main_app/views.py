@@ -131,6 +131,10 @@ class ActivityDelete(LoginRequiredMixin, DeleteView):
 class ActivityList(ListView):
   model = Activity
 
+def activity_deets(request, wish_str):
+  a = Activity.objects.get(name=wish_str)
+  return redirect('activity_detail', pk=a.id)
+
 class ActivityDetail(LoginRequiredMixin, DetailView):
   model = Activity
 
@@ -144,7 +148,7 @@ def signup(request):
       app_user = AppUser.objects.create(user=user)
       app_user.save()
       login(request, user)
-      return redirect('edit_interest', user_id=user.id)
+      return redirect('recommend', user_id=user.id)
       # return redirect('recommend')
     else:
       error_message = 'Invalid sign up - try again'
@@ -240,13 +244,19 @@ def add_wishlist(request, user_id, activity_str):
 def user_wishlist(request, user_id):
   appuser = AppUser.objects.get(user=user_id)
   Wishlist = Wish.objects.filter(user=user_id)
+  past_activities = UserActivity.objects.filter(user_id=user_id)
+  arr = []
+  for activity in past_activities:
+    arr.append(Wish.objects.get(id=activity.activity_id))
   return render(request, 'User/wishlist.html', {
     'appuser': appuser,
     'wishlist': Wishlist,
+    'acts': arr,
   })
 
 def remove_wish(request, user_id, wish_id):
-  Wish.objects.filter(id=wish_id).remove()
+  wish = Wish.objects.get(id=wish_id)
+  wish.delete()
   return redirect('user_wishlist', user_id=user_id)
 
 

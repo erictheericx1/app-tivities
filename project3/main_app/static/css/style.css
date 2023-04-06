@@ -50,6 +50,7 @@ th, td {
     background-color: var(--secondary-color);
     padding: 2rem;
     min-height: 40vh;
+    border-radius: 20px;
 }
 
 .interest-edit {

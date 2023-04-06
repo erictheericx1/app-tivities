@@ -4,17 +4,17 @@
 <h2>Activity Wishlist</h2>
 
 <div class="row">
-    <div class="one-half column user-card">
+    <div class="two-thirds column user-card">
         <h5>{{ user.get_username }}'s activity wishlist:</h5>
-        <ul>
             {% for wish in wishlist %}
-            <li> 
-                <a> {{ wish.name }} </a>
+            {% if wish not in acts %}
+            <div class="interest-edit">
+                <h6> {{ wish.name }} </h6> 
                 <a href="{% url 'add_activity' user.id wish.id%}" class="button">I did it!</a>
                 <a href="{% url 'remove_wish' user.id wish.id %}" class="button">Remove</a>
-            </li>
+            </div>
+            {% endif %}
             {% endfor %}
-        </ul>
     </div>
 
 </div>

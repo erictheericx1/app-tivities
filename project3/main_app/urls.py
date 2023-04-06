@@ -38,6 +38,7 @@ urlpatterns = [
     path('accounts/signup/', views.signup, name='signup'),
 
     #activity paths
+    path('activity/redirect/<str:wish_str>/', views.activity_deets, name='activity_redirect'),
     path('activity/', views.ActivityList.as_view(), name='activity'),
     path('activity/<int:pk>/', views.ActivityDetail.as_view(), name='activity_detail'),
     path('activity/create/', views.ActivityCreate.as_view(), name='activity_create'),

@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.postgres import fields as arrayField
 from django.contrib.auth.models import User
 
-default_interests = ('Art', 'Music', 'Sports', 'Games', 'Food', 'Travel', 'Fashion', 'Technology', 'Science', 'Nature', 'Animals', 'Politics', 'Religion', 'History', 'Education', 'Health', 'Fitness', 'Finance', 'Business', 'Entertainment', 'News', 'Weather', 'Ocean', 'Space', 'Cars', 'Plants', 'Books', 'Movies', 'TV', 'Theater', 'Comedy', 'Dance', 'Museums', 'Gardens', 'Parks', 'Zoos', 'Festivals', 'Concerts', 'Parties', 'Clubs', 'Bars', 'Coffee', 'Restaurants', 'Shopping', 'Hiking', 'Camping', 'Skiing', 'Snowboarding', 'Surfing', 'Swimming', 'Running', 'Biking', 'Yoga', 'Meditation', 'Cooking', 'Dining', 'Cruises', 'Road Trips', 'Vacations', 'Sightseeing', 'Photography', 'Painting', 'Sculpting', 'Writing', 'Poetry', 'Drama', 'Singing', 'Gaming', 'Board Games', 'Card Games', 'Video Games', 'Puzzles', 'Chess', 'Checkers', 'Backgammon', 'Monopoly', 'Scrabble', 'Candy', 'Ice Cream', 'Chocolate', 'Cookies', 'Pizza', 'Burgers', 'Sandwiches', 'Sushi', 'Tacos', 'Burritos', 'Pasta', 'Salads', 'Soups', 'Stews', 'Seafood', 'Steak', 'Chicken', 'Beef', 'Lamb', 'Pork', 'Vegetarian', 'Vegan', 'Gluten Free', 'Dairy Free', 'Eggs', 'Nuts', 'Spicy', 'Sweet', 'Salty', 'Sour', 'Bitter', 'Hot', 'Cold', 'Warm', 'Dry', 'Wet', 'Fast', 'Slow', 'High', 'Low', 'Big', 'Small', 'Long', 'Short', 'Round', 'Square', 'Flat', 'Tall', 'Short', 'Wide', 'Narrow', 'Deep', 'Shallow', 'Light', 'Heavy', 'Soft', 'Hard', 'Smooth', 'Rough', 'Windy', 'Rainy', 'Sunny', 'Cloudy', 'Snowy', 'Hot', 'Cold', 'Wet', 'Dry', 'Breezy', 'Humid', 'Foggy', 'Misty', 'Stormy', 'Tropical', 'Tundra', 'Reading', 'Sleep')
+default_interests = ('Art', 'Music', 'Sports', 'Games', 'Food', 'Travel', 'Fashion', 'Technology', 'Science', 'Nature', 'Politics', 'Religion', 'History', 'Education', 'Health', 'Fitness', 'Space', 'Cars', 'Bars', 'Photography', 'Painting', 'Writing', 'Reading')
 
 # Create your models here.
 class AppUser(models.Model):
@@ -67,23 +67,16 @@ class UserActivity(models.Model):
 #     ('Sports', 'Sports'),
 #     ('Games', 'Games'),
 #     ('Food', 'Food'),
-#     ('Travel', 'Travel'),
 #     ('Fashion', 'Fashion'),
 #     ('Technology', 'Technology'),
 #     ('Science', 'Science'),
 #     ('Nature', 'Nature'),
-#     ('Animals', 'Animals'),
 #     ('Politics', 'Politics'),
 #     ('Religion', 'Religion'),
 #     ('History', 'History'),
 #     ('Health', 'Health'),
 #     ('Fitness', 'Fitness'),
-#     ('Entertainment', 'Entertainment'),
-#     ('Weather', 'Weather'),
-#     ('Ocean', 'Ocean'),
 #     ('Space', 'Space'),
-#     ('Cars', 'Cars'),
-#     ('Mountains', 'Mountains'),
 # )
 
 
