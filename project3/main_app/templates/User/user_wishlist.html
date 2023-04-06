@@ -1,0 +1,22 @@
+{% extends 'user_base.html' %}
+{% block content2 %}
+
+<h2>Activity Wishlist {{user.id}}</h2>
+
+<div class="row">
+    <div class="one-half column user-card">
+        <h5>{{ user.get_username }}'s activity wishlist:</h5>
+        <ul>
+            {% for wish in wishes %}
+            <li>{{ wish.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+
+<script>
+    // append all the past activities to the div
+</script>
+
+{% endblock %}

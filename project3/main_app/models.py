@@ -15,15 +15,16 @@ class Activity(models.Model):
     description = models.CharField(max_length=255)
     interests = arrayField.ArrayField(models.CharField(max_length=255), blank=True, null=True)
 
-class UserActivity(models.Model):
-    user = models.ForeignKey(AppUser, related_name="activity_user", on_delete = models.CASCADE)
-    activity = models.ForeignKey(Activity, related_name="user_activity", on_delete = models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-class Inter(models.Model): # Interests
+class Wish(models.Model):
+    user = models.ForeignKey(AppUser, related_name="wish_user", on_delete = models.CASCADE)
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
+    interests = arrayField.ArrayField(models.CharField(max_length=255), blank=True, null=True)
 
+class UserActivity(models.Model):
+    user = models.ForeignKey(AppUser, related_name="activity_user", on_delete = models.CASCADE)
+    activity = models.ForeignKey(Wish, related_name="user_activity", on_delete = models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 # --------------------------------------------------------------------------------------------------------------------------------
 
@@ -37,7 +38,7 @@ class Inter(models.Model): # Interests
 #     name = models.CharField(max_length=255)
 #     color = models.CharField(max_length=20)
 
-# # # compare to cat model
+# # compare to cat model
 # class WishList(models.Model):
 #     name = models.CharField(max_length=255)
 #     description = models.TextField(max_length=255)

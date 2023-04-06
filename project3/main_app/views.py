@@ -9,7 +9,7 @@ from django.http import HttpResponse
 import openai
 import os
 
-from .models import User, Activity, UserActivity, AppUser # Inter, NewActivity, WishList
+from .models import User, Activity, UserActivity, AppUser, Wish # Inter, NewActivity, WishList
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
@@ -86,7 +86,7 @@ class UserCreate(LoginRequiredMixin, CreateView):
     form.instance.user = self.request.user
     return super().form_valid(form)
 
-# Define the recommend view
+# Define the recommend view (non-ai no longer in use)
 @login_required
 def recommend(request, user_id):
   user = User.objects.get(id=user_id)
@@ -110,7 +110,7 @@ def recommend(request, user_id):
 
 @login_required
 def add_activity(request, user_id, activity_id):
-  UserActivity.objects.create(user=AppUser.objects.get(id=user_id), activity=Activity.objects.get(id=activity_id))
+  UserActivity.objects.create(user=AppUser.objects.get(id=user_id), activity=Wish.objects.get(id=activity_id))
   print('activity added')
   return redirect('past_activities', user_id=user_id)
 
@@ -157,7 +157,7 @@ def signup(request):
 # ai stuff  
 # ------------------------- #
 
-def get_interests(request):
+def ai_rec(request):
     if request.method == 'POST':
         location = request.POST.get('location')
         prompt = f""" 
@@ -183,13 +183,45 @@ def get_interests(request):
 
         # Retrieve AppUser's interests based on the location value
         # Replace the following placeholder code with your actual logic for retrieving interests and calling the API
-        interests = ['dummy text']  # Placeholder code test
+        # Placeholder code test
+        interests = ['dummy text']  
         response = ', '.join(interests)
         return render(request, 'User/recommend.html', {'recommendation': activity_list}) 
         # return HttpResponse(response)
     else:
         return HttpResponse('Error: Invalid request method')
-  
+
+
+def add_wishlist(request, user_id, activity_str):
+  prompt = f""" 
+    Your job is to return a description of this activity in 2 sentences.
+    activity: {activity_str}
+    description: """
+        
+  response = openai.Completion.create(
+    model="text-davinci-003",
+    prompt=prompt,
+    temperature=0.9,
+    max_tokens=100,
+    top_p=1,
+    frequency_penalty=0,
+    presence_penalty=0.6,
+    stop=["<DONE>"]
+  )
+  descrption = response.choices[0].text
+  w = Wish.objects.create(name=activity_str, descrption=descrption, interests=[], user=user_id)
+  w.save()
+  a = Activity.objects.create(name=activity_str, descrption=descrption, interests=[])
+  a.save()
+
+  return redirect('wishlist', user_id=user_id)
+
+def user_wishlist(request, user_id):
+  user=User.object.get(id=user_id)
+  Wishlist = Wish.objects.filter(user=user_id)
+  return render(request, 'User/wishlist.html', {
+    'wishlist': Wishlist
+  })
 
 
 # def get_interests(request):
