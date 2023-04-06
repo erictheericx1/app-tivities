@@ -117,15 +117,16 @@ def add_activity(request, user_id, activity_id):
 class ActivityCreate(LoginRequiredMixin, CreateView):
   model = Activity
   fields = '__all__'
-  success_url = '/activities/'
+  success_url = '/activity/'
 
 class ActivityUpdate(LoginRequiredMixin, UpdateView):
   model = Activity
   fields = ['name', 'description', 'interests']
+  success_url = '/activity/'
 
 class ActivityDelete(LoginRequiredMixin, DeleteView):
   model = Activity
-  success_url = '/activities/'
+  success_url = '/activity/'
 
 class ActivityList(ListView):
   model = Activity

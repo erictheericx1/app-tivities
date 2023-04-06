@@ -16,6 +16,10 @@
                 {% endfor %}
             </ul>
         </p>
+        {% if user.is_staff %}
+            <a href="{% url 'activity_update' activity.id %}" class="button">Edit</a> 
+            <a href="{% url 'activity_delete' activity.id %}" class="button">Delete</a>
+        {% endif %}
     </div>
 
     <a href="{% url 'activity' %}" class="button">View all Activities</a>

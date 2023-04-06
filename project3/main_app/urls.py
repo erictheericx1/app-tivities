@@ -29,6 +29,8 @@ urlpatterns = [
 
     path('user/<int:user_id>/wishlist/<str:activity_str>/', views.add_wishlist, name='add_wishlist'),
 
+    path('user/<int:user_id>/wish/delete/<int:wish_id>', views.remove_wish, name='remove_wish'),
+
     path('accounts/', include('django.contrib.auth.urls')),
         # localhost:8000/accounts/login 
         # built in django user authentication

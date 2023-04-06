@@ -11,7 +11,7 @@
             <li> 
                 <a> {{ wish.name }} </a>
                 <a href="{% url 'add_activity' user.id wish.id%}" class="button">I did it!</a>
-                <!--  -->
+                <a href="{% url 'remove_wish' user.id wish.id %}" class="button">Remove</a>
             </li>
             {% endfor %}
         </ul>
