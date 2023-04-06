@@ -1,14 +1,18 @@
 {% extends 'user_base.html' %}
 {% block content2 %}
 
-<h2>Activity Wishlist {{user.id}}</h2>
+<h2>Activity Wishlist</h2>
 
 <div class="row">
     <div class="one-half column user-card">
         <h5>{{ user.get_username }}'s activity wishlist:</h5>
         <ul>
-            {% for wish in wishes %}
-            <li>{{ wish.name }}</li>
+            {% for wish in wishlist %}
+            <li> 
+                <a> {{ wish.name }} </a>
+                <a href="{% url 'add_activity' user.id wish.id%}" class="button">I did it!</a>
+                <!--  -->
+            </li>
             {% endfor %}
         </ul>
     </div>

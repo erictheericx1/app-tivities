@@ -4,7 +4,7 @@
     --background-color: white;
     --main-color: #c5c5c5;
     --secondary-color: #1eafdb55;
-    --skeleton-blue: #1EAEDB;
+    --skeleton-blue: #99c9d8;
     --logo-font: 'Bungee', cursive;
 }
 
@@ -119,6 +119,7 @@ th, td {
 }
 
 .preview {
+    border-radius: 20px;
     font-style: italic;
 }
 

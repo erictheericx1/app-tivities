@@ -27,7 +27,7 @@ urlpatterns = [
 
     path('user/<int:user_id>/wishlist', views.user_wishlist, name='user_wishlist'),
 
-    path('user/<int:user_id>/wishlist/<str:activty_str>/', views.add_wishlist, name='add_wishlist'),
+    path('user/<int:user_id>/wishlist/<str:activity_str>/', views.add_wishlist, name='add_wishlist'),
 
     path('accounts/', include('django.contrib.auth.urls')),
         # localhost:8000/accounts/login 
@@ -42,5 +42,5 @@ urlpatterns = [
     path('activity/<int:pk>/update/', views.ActivityUpdate.as_view(), name='activity_update'),
     path('activity/<int:pk>/delete/', views.ActivityDelete.as_view(), name='activity_delete'),
     
-    path('ai_rec/', views.ai_rec, name='ai_rec')
+    path('ai_rec/<int:user_id>', views.ai_rec, name='ai_rec')
 ]
