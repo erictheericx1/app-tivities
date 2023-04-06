@@ -1,6 +1,7 @@
 from django.urls import path, include
 from . import views
 
+
 urlpatterns = [
     # home paths
     path('', views.home, name='home'),
@@ -36,5 +37,5 @@ urlpatterns = [
     path('activity/create/', views.ActivityCreate.as_view(), name='activity_create'),
     path('activity/<int:pk>/update/', views.ActivityUpdate.as_view(), name='activity_update'),
     path('activity/<int:pk>/delete/', views.ActivityDelete.as_view(), name='activity_delete'),
-
+    path('interest/', views.get_interests, name='get_interests')
 ]

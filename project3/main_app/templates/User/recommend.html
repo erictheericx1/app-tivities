@@ -5,29 +5,30 @@
 
 <div class="row">
     <div class="one-half column user-card">
-        <a href="#" class="button" id="rec-btn">Get Recommendations</a>
+
+        <form action="/interest/" method="post" id="user-location-form">
+            {% csrf_token %}
+            <label for="location">Enter your current location:</label>
+            <input type="text" name="location" id="location">
+            <button type="submit" class="button">Get Recommendations</button>
+        </form>
+
         {% if recommendation %}
-        <div class="results" id="rec-results">
-            <h5>Here are some things you can do:</h5>
-            <h5>{{recommendation.name}}</h5>
-            <!-- stretch: maybe add some loading animation -->
-            <a href="{% url 'add_activity' user.id recommendation.id%}" class="button" id="rec-btn">I did it!</a>
+        <div>
+            {% for activity in recommendation %}
+                <p>{{ activity }}</p>
+                <a href="{% url 'add_activity' user.id recommendation.id%}" class="button" id="rec-btn">I did it!</a>
+            {% endfor %}
+        </div>
         {% else %}
         <div class="results" id="rec-results">
             <p>Sorry, we couldn't find anything for you.</p>
-            <p>Try adding some interests!</p>
+        </div>
         {% endif %}
+
         </div>
     </div>
 </div>
 
-<script>
-    let recBtn = document.getElementById('rec-btn');
-    let recResults = document.getElementById('rec-results');
-
-    recBtn.addEventListener('click', function() {
-        recResults.classList.remove("results");
-    })
-</script>
 
 {% endblock %}

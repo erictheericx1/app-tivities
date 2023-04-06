@@ -1,13 +1,17 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
-from .models import User, Activity, UserActivity, AppUser, Inter
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
+import openai
+import os
 
-# Create your views here.
+from .models import User, Activity, UserActivity, AppUser, Inter
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Define the home view
 def home(request):
@@ -146,3 +150,42 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+
+
+# ------------------------- #
+# ai stuff  
+# ------------------------- #
+
+def get_interests(request):
+    if request.method == 'POST':
+        location = request.POST.get('location')
+        prompt = f""" 
+        Your job is to return fun activites for a user to do based on their location. list the activity as new lines
+        eg. \n walk to the beach \n go to the park
+        location: {location}
+        activities: """
+        
+        response = openai.Completion.create(
+            model="text-davinci-003",
+            prompt=prompt,
+            temperature=0.9,
+            max_tokens=100,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0.6,
+            stop=["<DONE>"]
+        )
+        activities = response.choices[0].text
+        activity_list = activities.split('\n')
+        activity_list = [activity.strip() for activity in activity_list if activity != '']
+        print(activity_list)
+
+        # Retrieve AppUser's interests based on the location value
+        # Replace the following placeholder code with your actual logic for retrieving interests and calling the API
+        interests = ['dummy text']  # Placeholder code for interests, replace with actual logic
+        response = ', '.join(interests)
+        return render(request, 'User/recommend.html', {'recommendation': activity_list}) 
+        # return HttpResponse(response)
+    else:
+        return HttpResponse('Error: Invalid request method')
