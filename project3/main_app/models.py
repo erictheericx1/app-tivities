@@ -23,3 +23,88 @@ class UserActivity(models.Model):
 class Inter(models.Model): # Interests
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
+
+
+# --------------------------------------------------------------------------------------------------------------------------------
+
+# CATEGORIES = (
+#     ('A', 'Activity category'),
+#     ('L', 'Location category'),
+# )
+
+# # # compare to toy model 
+# class ActivityTag(models.Model):
+#     name = models.CharField(max_length=255)
+#     color = models.CharField(max_length=20)
+
+# # # compare to cat model
+# class WishList(models.Model):
+#     name = models.CharField(max_length=255)
+#     description = models.TextField(max_length=255)
+#     category = models.CharField(
+#         max_length=1,
+#         choices=CATEGORIES,
+#         default=CATEGORIES[1],
+#     )
+#     tag = models.ManyToManyField(ActivityTag)
+
+# # compare to feeding model 
+# class NewActivity(models.Model):
+#     name = models.CharField(max_length=255)
+#     location = models.CharField(max_length=255)
+#     wishlist = models.ForeignKey(WishList, on_delete=models.CASCADE)
+#     complete = models.BooleanField(default=False)
+
+
+
+
+
+
+# INTERESTS = (
+#     ('Art', 'Art'),
+#     ('Music', 'Music'),
+#     ('Sports', 'Sports'),
+#     ('Games', 'Games'),
+#     ('Food', 'Food'),
+#     ('Travel', 'Travel'),
+#     ('Fashion', 'Fashion'),
+#     ('Technology', 'Technology'),
+#     ('Science', 'Science'),
+#     ('Nature', 'Nature'),
+#     ('Animals', 'Animals'),
+#     ('Politics', 'Politics'),
+#     ('Religion', 'Religion'),
+#     ('History', 'History'),
+#     ('Health', 'Health'),
+#     ('Fitness', 'Fitness'),
+#     ('Entertainment', 'Entertainment'),
+#     ('Weather', 'Weather'),
+#     ('Ocean', 'Ocean'),
+#     ('Space', 'Space'),
+#     ('Cars', 'Cars'),
+#     ('Mountains', 'Mountains'),
+# )
+
+
+
+
+# class NewAppUser(models.Model):
+#     user = models.ForeignKey(User, related_name="new_app_user", on_delete = models.CASCADE)
+#     location = models.CharField(max_length=255)
+#     INTEREST_CHOICES = models.CharField(
+#         choices=INTERESTS,
+#         default=INTERESTS[0],
+#     )
+
+# class Location(models.Model):
+#     name = models.CharField(max_length=255)
+#     state = models.CharField(max_length=255)
+#     country = models.CharField(max_length=255)
+
+
+
+
+
+
+
+

@@ -9,7 +9,7 @@
         <form action="/interest/" method="post" id="user-location-form">
             {% csrf_token %}
             <label for="location">Enter your current location:</label>
-            <input type="text" name="location" id="location">
+            <input type="text" name="location" id="location" placeholder=" {{ user.get_username }} ">
             <button type="submit" class="button">Get Recommendations</button>
         </form>
 
@@ -17,16 +17,20 @@
         <div>
             {% for activity in recommendation %}
                 <p>{{ activity }}</p>
-                <a href="{% url 'add_activity' user.id recommendation.id%}" class="button" id="rec-btn">I did it!</a>
+                <a href="#" class="button" id="rec-btn">add to wishlist</a>
+                    <!-- CRUD for Activity model - when a user clicks this button, it redirects to the CreateActivity form and pre-fills the form with the activity name generated here. so this ai function becomes the basis of the CRUD operations for the activity model. we can update that model to have a boolean to see if it's done or not. if the user edits the activity wishlist to be completed, then it moves to past activities   -->
+
             {% endfor %}
         </div>
         {% else %}
         <div class="results" id="rec-results">
-            <p>Sorry, we couldn't find anything for you.</p>
+            <p>Activities loading....</p>
         </div>
         {% endif %}
 
         </div>
+
+
     </div>
 </div>
 
