@@ -16,9 +16,10 @@
                 {% endfor %}
             </ul>
         </p>
+        <a href="#" class="button button-primary">Add to Wishlist</a>
         {% if user.is_staff %}
             <a href="{% url 'activity_update' activity.id %}" class="button">Edit</a> 
-            <a href="{% url 'activity_delete' activity.id %}" class="button">Delete</a>
+            <a href="{% url 'activity_delete' activity.id %}" class="button button-del">Delete</a>
         {% endif %}
     </div>
 

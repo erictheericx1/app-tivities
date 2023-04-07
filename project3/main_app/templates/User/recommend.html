@@ -1,8 +1,6 @@
 {% extends 'user_base.html' %}
 {% block content2 %}
 
-<h2>Find Activities </h2>
-
 <div class="row">
     <div class="two-thirds column user-card">
 
@@ -15,13 +13,15 @@
 
         {% if recommendation %}
 
-        <div class="results-display">
+        <div>
             {% for activity in recommendation %}
-                <p>{{ activity }}</p>
-                <form method="post" action="{% url 'add_wishlist' appuser.id activity %}">
-                    {% csrf_token %}
-                    <input type="submit" value="Add to Wishlist" class="button" id="wish-btn">
-                </form>
+                <div class="results-display">
+                    <p>{{ activity }}</p>
+                    <form method="post" action="{% url 'add_wishlist' appuser.id activity %}">
+                        {% csrf_token %}
+                        <input type="submit" value="Add to Wishlist" class="button" id="wish-btn">
+                    </form>
+                </div>
             {% endfor %}    
         </div>
 

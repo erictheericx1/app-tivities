@@ -16,7 +16,7 @@
                     <a href="{% url 'activity_detail' activity.id %}" class="button">Details</a> 
                     {% if user.is_staff %}
                         <a href="{% url 'activity_update' activity.id %}" class="button">Edit</a> 
-                        <a href="{% url 'activity_delete' activity.id %}" class="button">Delete</a>
+                        <a href="{% url 'activity_delete' activity.id %}" class="button button-del">Delete</a>
                     {% endif %}
                 </div>
 
