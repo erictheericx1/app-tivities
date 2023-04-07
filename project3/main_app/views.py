@@ -165,6 +165,8 @@ def signup(request):
 def ai_rec(request, user_id):
     if request.method == 'POST':
         location = request.POST.get('location')
+        interests = AppUser.objects.get(id=user_id).interests
+        print(interests)
         prompt = f""" 
         Your job is to return fun activites for a user to do based on their location. list the activity as new lines
         eg. \n walk to the beach \n go to the park

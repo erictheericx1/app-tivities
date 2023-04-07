@@ -6,17 +6,14 @@
 
     <div class="user-welcome">
         <h2>Welcome, {{ user.get_username }}</h2>
+        <a id='userId' display="none">{{ user.id }}</a>
     </div>
 
     <div class="user-nav">
-        <a href="{% url 'recommend' user.id%}" class="button button-primary">Find Activities</a>
-            <!-- CREATE  -->
-        <a href="{% url 'user_wishlist' user.id %}" class="button">activity wishlist</a>
-            <!-- READ UPDATE DELETE (change to extend user_base) - filter based on completed=false boolean -->
-        <a href="{% url 'past_activities' user.id%}" class="button">Past Activities</a>
-            <!-- READ UPDATE DELETE (change to extend user_base) - filter based on completed=true boolean -->
-        <a href="{% url 'interests' user.id%}" class="button">interests</a>
-            <!-- READ UPDATE DELETE for user profile -->
+        <a href="{% url 'recommend' user.id%}" class="huh button button-primary" id="RecBtn">Find Activities</a>
+        <a href="{% url 'user_wishlist' user.id %}" class="huh button" id="WishBtn">activity wishlist</a>
+        <a href="{% url 'past_activities' user.id%}" class="huh button" id="PastBtn">Past Activities</a>
+        <a href="{% url 'interests' user.id%}" class="huh button" id="IntBtn">interests</a>
 
     </div>
 
@@ -26,5 +23,32 @@
     </div>
 
 </div>
+
+<script>
+    btns = document.getElementsByClassName('huh')
+    console.log(btns)
+    for (let i = 0; i < btns.length; i++) {
+    btns[i].setAttribute('class', 'huh button')
+    }
+    hiddenId = document.getElementById('userId')
+    hiddenId.style.display = 'None'
+    userId = parseInt(hiddenId.text)
+    if (window.location.pathname === `/user/${userId}/`) {
+        btn = document.getElementById('PastBtn')
+        btn.setAttribute('class', 'huh button button-primary')
+    } else if (window.location.pathname === `/user/${userId}/recommend/`) {
+        btn = document.getElementById('RecBtn')
+        btn.setAttribute('class', 'huh button button-primary')
+    } else if (window.location.pathname === `/user/${userId}/wishlist`) {
+        btn = document.getElementById('WishBtn')
+        btn.setAttribute('class', 'huh button button-primary')
+    } else if (window.location.pathname === `/user/${userId}/interests/`) {
+        btn = document.getElementById('IntBtn')
+        btn.setAttribute('class', 'huh button button-primary')
+    } else if (window.location.pathname === `/user/${userId}/interests/edit/`) {
+        btn = document.getElementById('IntBtn')
+        btn.setAttribute('class', 'huh button button-primary')
+    }
+</script>
 
 {% endblock %}

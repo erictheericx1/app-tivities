@@ -4,7 +4,7 @@
     --background-color: white;
     --main-color: #c5c5c5;
     --secondary-color: #1eafdb55;
-    --skeleton-blue: #31b1d8;
+    --skeleton-blue: #1EAEDB;
     --logo-font: 'Bungee', cursive;
 }
 
@@ -30,11 +30,29 @@ th, td {
     margin-top: 2rem;
 }
 
+/* .button-del {
+    color: red;
+    border: 1px solid red;
+} */
+
+.button-del:hover {
+    background-color: #ff0000;
+    color: white;
+    border: 1px solid rgb(194, 194, 194);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.button-edit {
+    color: rgb(1, 138, 1);
+    border: 1px solid green;
+}
+
 /* user page styles 
 ---------------------------------*/
 
-.user-styles {
-    background: linear-gradient(to bottom, var(--main-color), var(--background-color));
+.gradient {
+    background: linear-gradient(var(--main-color) 0%, var(--background-color) 10%);
 }
 
 .user-welcome {
@@ -69,12 +87,15 @@ th, td {
 
 .results-display {
     display: block;
+    background-color: white;
+    border-radius: 5px;
+    padding: 2rem;
+    margin: 2rem 0;
 }
 
 
 /* activity model styles 
 ---------------------------------*/
-
 
 .activity-card {
     background-color: var(--secondary-color);
