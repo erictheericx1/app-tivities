@@ -4,7 +4,7 @@
     --background-color: white;
     --main-color: #c5c5c5;
     --secondary-color: #1eafdb55;
-    --skeleton-blue: #1EAEDB;
+    --skeleton-blue: #31b1d8;
     --logo-font: 'Bungee', cursive;
 }
 
@@ -50,6 +50,7 @@ th, td {
     background-color: var(--secondary-color);
     padding: 2rem;
     min-height: 40vh;
+    border-radius: 20px;
 }
 
 .interest-edit {
@@ -59,10 +60,10 @@ th, td {
     padding: 2rem;
 }
 
-/* activity result styles 
+/* recommend activity styles 
 ---------------------------------*/
 
-.results {
+.loading {
     display: none;
 }
 
@@ -126,6 +127,7 @@ th, td {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
     background-color: var(--skeleton-blue);
     text-align: center;
     height: 100%;

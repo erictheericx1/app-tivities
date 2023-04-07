@@ -9,9 +9,15 @@
     </div>
 
     <div class="user-nav">
-        <a href="{% url 'recommend' user.id%}" class="button">Find Activities</a>
-        <a href="{% url 'interests' user.id%}" class="button">Interests</a>
+        <a href="{% url 'recommend' user.id%}" class="button button-primary">Find Activities</a>
+            <!-- CREATE  -->
+        <a href="{% url 'user_wishlist' user.id %}" class="button">activity wishlist</a>
+            <!-- READ UPDATE DELETE (change to extend user_base) - filter based on completed=false boolean -->
         <a href="{% url 'past_activities' user.id%}" class="button">Past Activities</a>
+            <!-- READ UPDATE DELETE (change to extend user_base) - filter based on completed=true boolean -->
+        <a href="{% url 'interests' user.id%}" class="button">interests</a>
+            <!-- READ UPDATE DELETE for user profile -->
+
     </div>
 
     <div class="user-content">

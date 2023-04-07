@@ -1,33 +1,49 @@
 {% extends 'user_base.html' %}
 {% block content2 %}
 
-<h1>Tell Me What to Do!</h1>
+<h2>Find Activities </h2>
 
 <div class="row">
-    <div class="one-half column user-card">
-        <a href="#" class="button" id="rec-btn">Get Recommendations</a>
+    <div class="two-thirds column user-card">
+
+        <form action="{% url 'ai_rec' appuser.id %}" method="post" id="user-location-form">
+            {% csrf_token %}
+            <label for="location">Enter your current location:</label>
+            <input type="text" name="location" id="location" placeholder="Ex: San Francisco, CA">
+            <button type="submit" class="button" id="rec-btn">Get Recommendations</button>
+        </form>
+
         {% if recommendation %}
-        <div class="results" id="rec-results">
-            <h5>Here are some things you can do:</h5>
-            <h5>{{recommendation.name}}</h5>
-            <!-- stretch: maybe add some loading animation -->
-            <a href="{% url 'add_activity' user.id recommendation.id%}" class="button" id="rec-btn">I did it!</a>
-        {% else %}
-        <div class="results" id="rec-results">
-            <h5>Sorry, we couldn't find anything for you.</h5>
-            <h5>Try adding some interests!</h5>
-        {% endif %}
+
+        <div class="results-display">
+            {% for activity in recommendation %}
+                <p>{{ activity }}</p>
+                <form method="post" action="{% url 'add_wishlist' appuser.id activity %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Add to Wishlist" class="button" id="wish-btn">
+                </form>
+            {% endfor %}    
         </div>
+
+        {% else %}
+
+        <div class="loading" id="loading">
+            <p>Activities loading....</p>
+        </div>
+
+        {% endif %}
+
     </div>
 </div>
 
 <script>
-    let recBtn = document.getElementById('rec-btn');
-    let recResults = document.getElementById('rec-results');
-
-    recBtn.addEventListener('click', function() {
-        recResults.classList.remove("results");
+    const recBtn = document.getElementById('rec-btn');
+    const loading = document.getElementById('loading');
+    
+    recBtn.addEventListener('click', () => {
+        loading.classList.remove('loading');
     })
+
 </script>
 
 {% endblock %}

@@ -3,6 +3,8 @@
 
 <h2>Edit Interests</h2>
 
+<a href="{% url 'interests' user.id %}" class="button button-primary">Finish Editing</a>
+
 <div class="row">
 
     <div class="one-half column user-card">
@@ -19,19 +21,15 @@
         <h3 id="edit-interests">Add interests </h3>
         {% for interest in appuser.all_interests %}
             {% if interest not in appuser.interests %}
-            <div class="interest-add row">
+            <div class="interest-edit row">
                 <p class="six columns">{{ interest }}</p>
-                <a href="{% url 'add_interest' user.id interest %}" class="six columns">add</a>
+                <a href="{% url 'add_interest' user.id interest %}" class="button">add</a>
             </div>
             {% endif %}
         {% endfor %}        
     </div>
 
 </div>
-
-<br>
-
-<a href="{% url 'interests' user.id %}" class="button">Back to Interests</a>
 
 <script>
     const editInterests = document.getElementById('edit-interests');

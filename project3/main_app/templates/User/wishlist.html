@@ -1,0 +1,26 @@
+{% extends 'user_base.html' %}
+{% block content2 %}
+
+<h2>Activity Wishlist</h2>
+
+<div class="row">
+    <div class="two-thirds column user-card">
+        <h5>{{ user.get_username }}'s activity wishlist:</h5>
+            {% for wish in wishlist %}
+            {% if wish not in acts %}
+            <div class="interest-edit">
+                <h6> {{ wish.name }} </h6> 
+                <a href="{% url 'add_activity' user.id wish.id%}" class="button">I did it!</a>
+                <a href="{% url 'remove_wish' user.id wish.id %}" class="button">Remove</a>
+            </div>
+            {% endif %}
+            {% endfor %}
+    </div>
+
+</div>
+
+<script>
+    // append all the past activities to the div
+</script>
+
+{% endblock %}
