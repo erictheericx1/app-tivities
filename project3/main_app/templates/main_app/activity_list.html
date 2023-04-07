@@ -5,6 +5,9 @@
     <h1>Activities</h1>
 
     <div class="activity-list">
+        {% if user.is_staff %}
+        <a href="{% url 'activity_create' %}" class="button">Add an Activity</a>
+        {% endif %}
         {% for activity in object_list %}
             <div class="activity-card">
                 <h5> {{ activity.name }}</h5>
@@ -13,7 +16,7 @@
                     <a href="{% url 'activity_detail' activity.id %}" class="button">Details</a> 
                     {% if user.is_staff %}
                         <a href="{% url 'activity_update' activity.id %}" class="button">Edit</a> 
-                        <a href="{% url 'activity_delete' activity.id %}" class="button">Delete</a>
+                        <a href="{% url 'activity_delete' activity.id %}" class="button button-del">Delete</a>
                     {% endif %}
                 </div>
 

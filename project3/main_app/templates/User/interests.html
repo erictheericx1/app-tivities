@@ -1,19 +1,17 @@
 {% extends 'user_base.html' %}
 {% block content2 %}
 
-<h2>Interests</h2>
 
 <div class="row">
-    <div class="one-half column user-card">
-        <h3>Current Interests</h3>
-        <ul>
+    <div class="two-thirds column user-card">
+        <h3 id="edit-interests">Current Interests</h3>
+        <a href="{% url 'edit_interest' user.id %}" class="button button-primary">Edit Interests</a>
         {% for interest in appuser.interests %}
-            <li>{{ interest }}</li>
-        {% endfor %}
-        </ul>
-        <a href="{% url 'edit_interest' user.id %}" class="button">Edit Interests</a>
+            <div class="interest-edit row">
+                <p class="six columns">{{ interest }}</p>
+            </div>
+        {% endfor %}  
     </div>
-    
 </div>
 
 <script>
