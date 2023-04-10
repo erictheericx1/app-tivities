@@ -72,10 +72,6 @@ def interests_remove(request, user_id, interest):
   appuser.save()
   return redirect('edit_interest', user_id=user_id)
 
-# class AppUserUpdate(UpdateView):
-#   model = AppUser
-#   fields = ['interests']
-#   success_url = '/user/{user_id}/interests/'
 
 class UserCreate(LoginRequiredMixin, CreateView):
   model = AppUser
@@ -97,16 +93,6 @@ def recommend(request, user_id):
     'appuser': appuser,
     'recommendation': recommendation,
   })
-
-# Logging user did activity
-# class UserActivityCreate(CreateView):
-#   model = UserActivity
-#   fields = ['activity']
-#   success_url = '/user/<int:user_id>/past_activities/'
-
-#   def form_valid(self, form):
-#     form.instance.user = AppUser.objects.get(id=self.request.user.id)
-#     return super().form_valid(form)
 
 @login_required
 def add_activity(request, user_id, activity_id):
@@ -188,11 +174,6 @@ def ai_rec(request, user_id):
         activity_list = [activity.strip() for activity in activity_list if activity != '']
         print(activity_list)
 
-        # Retrieve AppUser's interests based on the location value
-        # Replace the following placeholder code with your actual logic for retrieving interests and calling the API
-        # Placeholder code test
-        interests = ['dummy text']  
-        response = ', '.join(interests)
         appuser = AppUser.objects.get(id=user_id)
         return render(request, 'User/recommend.html', {
           'recommendation': activity_list,
