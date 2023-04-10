@@ -72,10 +72,6 @@ def interests_remove(request, user_id, interest):
   appuser.save()
   return redirect('edit_interest', user_id=user_id)
 
-# class AppUserUpdate(UpdateView):
-#   model = AppUser
-#   fields = ['interests']
-#   success_url = '/user/{user_id}/interests/'
 
 class UserCreate(LoginRequiredMixin, CreateView):
   model = AppUser
@@ -86,7 +82,7 @@ class UserCreate(LoginRequiredMixin, CreateView):
     form.instance.user = self.request.user
     return super().form_valid(form)
 
-# Define the recommend view (non-ai no longer in use)
+# Define the recommend view (non-ai, no longer in use due to reaching stretch goal)
 @login_required
 def recommend(request, user_id):
   user = User.objects.get(id=user_id)
@@ -98,15 +94,10 @@ def recommend(request, user_id):
     'recommendation': recommendation,
   })
 
-# Logging user did activity
-# class UserActivityCreate(CreateView):
-#   model = UserActivity
-#   fields = ['activity']
-#   success_url = '/user/<int:user_id>/past_activities/'
+# ------------------------- #
+# Activity CRUD 
+# ------------------------- #
 
-#   def form_valid(self, form):
-#     form.instance.user = AppUser.objects.get(id=self.request.user.id)
-#     return super().form_valid(form)
 
 @login_required
 def add_activity(request, user_id, activity_id):
@@ -138,7 +129,10 @@ def activity_deets(request, wish_str):
 class ActivityDetail(LoginRequiredMixin, DetailView):
   model = Activity
 
-  # signup view
+# ------------------------- #
+# login  
+# ------------------------- #
+
 def signup(request):
   error_message = ''
   if request.method == 'POST':
@@ -166,13 +160,13 @@ def ai_rec(request, user_id):
     if request.method == 'POST':
         location = request.POST.get('location')
         interests = AppUser.objects.get(id=user_id).interests
-        print(interests)
+        print(f"User interests: {interests}")
         prompt = f""" 
-        Your job is to return fun activites for a user to do based on their location. list the activity as new lines
-        eg. \n walk to the beach \n go to the park
+        Your job is to return fun activites for a user to do based on their location and interests, focusing more on the location over the interests. list the activity as new lines
+        eg. \n Walk to the beach \n Go to the park
         location: {location}
+        interests: {interests}
         activities: """
-        
         response = openai.Completion.create(
             model="text-davinci-003",
             prompt=prompt,
@@ -186,19 +180,13 @@ def ai_rec(request, user_id):
         activities = response.choices[0].text
         activity_list = activities.split('\n')
         activity_list = [activity.strip() for activity in activity_list if activity != '']
-        print(activity_list)
+        print(f"AI Activity List: {activity_list}")
 
-        # Retrieve AppUser's interests based on the location value
-        # Replace the following placeholder code with your actual logic for retrieving interests and calling the API
-        # Placeholder code test
-        interests = ['dummy text']  
-        response = ', '.join(interests)
         appuser = AppUser.objects.get(id=user_id)
         return render(request, 'User/recommend.html', {
           'recommendation': activity_list,
           'appuser': appuser,
           }) 
-        # return HttpResponse(response)
     else:
         return HttpResponse('Cant generate activity ideas. 404 page coming soon....')
 
@@ -227,21 +215,13 @@ def add_wishlist(request, user_id, activity_str):
     a = Activity.objects.create(name=activity_str, description=description, interests=[])
     a.save()
 
-    # new_activity = NewActivity()
-    # new_activity.name = 'New Activity Name'  # Set the other fields as appropriate
-    # new_activity.location = 'New Activity Location'
-    # new_activity.wishlist = Wishlist.objects.get(id=1)  # Set the wishlist object based on your logic
-
-    # # Set the description field with the generated activities
-    # new_activity.description = activities
-
-    # new_activity.save()  # Save the new activity object
-
     return redirect('user_wishlist', user_id=user_id)
   else:
     return HttpResponse('Cant add to wishlist. 404 coming soon......')
   
-
+# ------------------------- #
+# wishlist   
+# ------------------------- #
 
 def user_wishlist(request, user_id):
   appuser = AppUser.objects.get(user=user_id)
@@ -261,46 +241,11 @@ def remove_wish(request, user_id, wish_id):
   wish.delete()
   return redirect('user_wishlist', user_id=user_id)
 
-
-# def get_interests(request):
-#     if request.method == 'POST':
-#         location = request.POST.get('location')
-#         prompt = f""" 
-#         Your job is to return fun activites for a user to do based on their location. list the activity as new lines
-#         eg. \n walk to the beach \n go to the park
-#         location: {location}
-#         activities: """
-        
-#         response = openai.Completion.create(
-#             model="text-davinci-003",
-#             prompt=prompt,
-#             temperature=0.9,
-#             max_tokens=100,
-#             top_p=1,
-#             frequency_penalty=0,
-#             presence_penalty=0.6,
-#             stop=["<DONE>"]
-#         )
-#         activities = response.choices[0].text
-#         activity_list = activities.split('\n')
-#         activity_list = [activity.strip() for activity in activity_list if activity != '']
-#         print(activity_list)
-#                 # Create a new NewActivity object
-#         new_activity = NewActivity()
-#         new_activity.name = 'New Activity Name'  # Set the other fields as appropriate
-#         new_activity.location = 'New Activity Location'
-#         new_activity.wishlist = Wishlist.objects.get(id=1)  # Set the wishlist object based on your logic
-
-#         # Set the description field with the generated activities
-#         new_activity.description = activities
-
-#         new_activity.save()  # Save the new activity object
-
-#         # Retrieve AppUser's interests based on the location value
-#         # Replace the following placeholder code with your actual logic for retrieving interests and calling the API
-#         interests = ['dummy text']  # Placeholder code test
-#         response = ', '.join(interests)
-#         return render(request, 'User/recommend.html', {'recommendation': activity_list}) 
-#         # return HttpResponse(response)
-#     else:
-#         return HttpResponse('Error: Invalid request method')
+def activity_to_wish(request, activity_id, user_id):
+  activity = Activity.objects.get(id=activity_id)
+  if activity in Wish.objects.filter(name=activity.name):
+    return redirect('user_wishlist', user_id=user_id)
+  else:
+    wish = Wish.objects.create(user=AppUser.objects.get(id=user_id), name=activity.name, description=activity.description, interests=[])
+    wish.save()
+  return redirect('user_wishlist', user_id=user_id)
