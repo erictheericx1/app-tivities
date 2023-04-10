@@ -4,12 +4,15 @@ from django.contrib.auth.models import User
 
 # default_interests = ('Art', 'Music', 'Sightseeing', 'Shopping', 'Restaurants', 'Bars', 'Events', 'Outdoor Recreation', 'History', 'Nature', 'Education', 'Fitness', 'Travel', 'Books', 'Photography', 'Theater', 'Architecture', 'Cuisine', 'Local Culture', 'Street Markets', 'Museums', 'Urban Exploration', 'City Parks', 'Public Transportation')
 
-default_interests = ('Art','Music','Sports','Games','Food','Travel','Fashion','Technology','Science','Nature','Politics','Religion', 'History','Education','Health', 'Fitness', 'Space', 'Cars', 'Bars', 'Photography', 'Painting', 'Writing', 'Reading')
+def default_interests():
+    return ['Art','Music','Sports','Games','Food','Travel','Fashion','Technology','Science','Nature','Politics','Religion', 'History','Education','Health', 'Fitness', 'Space', 'Cars', 'Bars', 'Photography', 'Painting', 'Writing', 'Reading']
+
+# default_interests = ['Art','Music','Sports','Games','Food','Travel','Fashion','Technology','Science','Nature','Politics','Religion', 'History','Education','Health', 'Fitness', 'Space', 'Cars', 'Bars', 'Photography', 'Painting', 'Writing', 'Reading']
 
 # Create your models here.
 class AppUser(models.Model):
     user = models.ForeignKey(User, related_name="app_user", on_delete = models.CASCADE)
-    interests = arrayField.ArrayField(models.CharField(max_length=255), blank=True, null=True, default = [])
+    interests = arrayField.ArrayField(models.CharField(max_length=255), blank=True, null=True, default = list)
     all_interests = arrayField.ArrayField(models.CharField(max_length=255), blank=True, null=True, default=default_interests)
 
 class Activity(models.Model):
