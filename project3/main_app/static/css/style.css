@@ -148,7 +148,7 @@ th, td {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 20px;
     background-color: var(--skeleton-blue);
     text-align: center;
     height: 100%;
@@ -157,6 +157,27 @@ th, td {
 .tile:hover {
     transform: scale(1.1);
 }
+
+#d {
+    display: none;
+}
+
+@media (max-width: 550px) {
+    #a {
+        display: none;
+    }
+    #b {
+        display: none;
+    }
+    #c {
+        display: none;
+    }
+    #d {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
 
 /* nav styles 
 ---------------------------------*/
