@@ -8,14 +8,19 @@
     <div class="activity-card">
         <h4>{{ activity.name }}</h4>
         <p>{{ activity.description }}</p>
-        <p id="interest-array">
-            Associated Interests:
-            <ul>
-                {% for interest in activity.interests %}
-                    <li>{{ interest }}</li>
-                {% endfor %}
-            </ul>
-        </p>
+        <div id="interest-array">
+            {% if activity.interests %}
+                <p>Associated Interests:</p>
+                <ul>
+                    {% for interest in activity.interests %}
+                        <li>{{ interest }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p> </p>
+            {% endif %}
+        </div>
+        
         <a href="#" class="button button-primary">Add to Wishlist</a>
         {% if user.is_staff %}
             <a href="{% url 'activity_update' activity.id %}" class="button">Edit</a> 
