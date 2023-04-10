@@ -74,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'project3.wsgi.application'
+WSGI_APPLICATION = '.project3.project3.wsgi.application'
 
 
 # Database
@@ -147,5 +147,6 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 
+# Configure Django App for Heroku.
 import django_on_heroku
 django_on_heroku.settings(locals())
