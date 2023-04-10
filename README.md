@@ -8,7 +8,7 @@ Our goal is to make having fun and finding things to do easy! Just enter your in
 
 
 ## Home Page
-![Landing page](/project3/project3/static/assets/landing-page.jpg)
+![Landing page](/project3/project3/static/assets/landing-page.jepg)
 
 
 
