@@ -240,3 +240,12 @@ def remove_wish(request, user_id, wish_id):
   wish = Wish.objects.get(id=wish_id)
   wish.delete()
   return redirect('user_wishlist', user_id=user_id)
+
+def activity_to_wish(request, activity_id, user_id):
+  activity = Activity.objects.get(id=activity_id)
+  if activity in Wish.objects.filter(name=activity.name):
+    return redirect('user_wishlist', user_id=user_id)
+  else:
+    wish = Wish.objects.create(user=AppUser.objects.get(id=user_id), name=activity.name, description=activity.description, interests=[])
+    wish.save()
+  return redirect('user_wishlist', user_id=user_id)

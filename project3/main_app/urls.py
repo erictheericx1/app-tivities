@@ -41,6 +41,7 @@ urlpatterns = [
     path('activity/redirect/<str:wish_str>/', views.activity_deets, name='activity_redirect'),
     path('activity/', views.ActivityList.as_view(), name='activity'),
     path('activity/<int:pk>/', views.ActivityDetail.as_view(), name='activity_detail'),
+    path('activity/<int:activity_id>/add/<int:user_id>/', views.activity_to_wish, name='add_activity_wish'),
     path('activity/create/', views.ActivityCreate.as_view(), name='activity_create'),
     path('activity/<int:pk>/update/', views.ActivityUpdate.as_view(), name='activity_update'),
     path('activity/<int:pk>/delete/', views.ActivityDelete.as_view(), name='activity_delete'),
