@@ -32,6 +32,7 @@ DEBUG = True if os.environ['MODE'] == 'dev' else False
 ALLOWED_HOSTS = []
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
